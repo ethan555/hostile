@@ -1,0 +1,38 @@
+/// Macros
+#macro VIEW_STANDARD_WIDTH 800
+#macro VIEW_STANDARD_HEIGHT 450
+
+#macro IDLE 0
+#macro RUN 1
+#macro SKID 2
+#macro DODGE 3
+#macro SWING 4
+#macro BLOCK 5
+#macro PARRY 6
+#macro CROUCH 7
+#macro JUMP 8
+#macro HURT 9
+#macro THROWN 10
+#macro SWING_JUMP 11
+#macro STAND 12
+#macro DIE 13
+#macro LAND 14
+
+#macro GRAVITY .5
+#macro TERMINAL 50
+#macro LANDSPEED 15
+
+#macro WALKSPEED 4.5
+#macro DODGESPEED 14
+#macro DODGE_ENDSPEED 9
+#macro JUMPSPEED 10
+
+#macro FOREGROUND_DEPTH3 -3000
+#macro FOREGROUND_DEPTH2 -2000
+#macro FOREGROUND_DEPTH1 -1000
+#macro PLAYER_DEPTH 0
+#macro ENEMY_DEPTH 10
+#macro ROCK_DEPTH 100
+#macro BACKGROUND_DEPTH1 1000
+#macro BACKGROUND_DEPTH2 2000
+#macro BACKGROUND_DEPTH3 3000
