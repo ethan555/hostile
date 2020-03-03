@@ -16,18 +16,20 @@ in[block] = control.block;
 
 get_last_pressed();
 
-if (in[block]) {
+/*if (in[block]) {
 	state = THROWN;
 	xspd = -facing * 3;
 	yspd = -15;
 	change_sprite(THROWN,0,0);
-}
+}*/
 
 if (keyboard_check_pressed(ord("R"))) {
+	state = IDLE;
 	x = xstart;
 	y = ystart;
 	room_restart();
 }
 
+on_land = check_land();
 script_execute(states[state]);
 #endregion

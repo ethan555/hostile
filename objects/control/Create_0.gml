@@ -8,7 +8,7 @@ instance_create_depth(x,y,depth,particle_control);
 instance_create_depth(x,y,depth,audio_player);
 
 esc = vk_escape;
-s = noone;
+s = noone;//ord("K");
 
 l = ord("A");
 r = ord("D");
@@ -16,6 +16,7 @@ d = ord("S");
 u = ord("W");
 
 dod = vk_shift;
+dod2 = ord("L");
 jup = vk_space;
 a = ord("K");
 b = ord("J");

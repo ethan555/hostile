@@ -3,8 +3,7 @@
 #region Check if player should fall, or if not, is jumping
 var l = instance_place(x,y+1,ledge);
 var l_below = (l != noone && bbox_bottom < l.bbox_top);
-var below = l_below || instance_place(x,y+1,collider) != noone;
-if (below) {
+if (on_land) {
 	if (yspdold > LANDSPEED) {
 		xspd = 0;
 		state = LAND;

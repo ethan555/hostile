@@ -30,4 +30,6 @@ else if (last_pressed_timer > 0) {
 
 if (last_pressed != noone) {
 	in[last_pressed] = true;
+	if (state == IDLE && on_land)
+		last_pressed = noone;
 }

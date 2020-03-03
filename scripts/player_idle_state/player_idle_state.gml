@@ -1,6 +1,9 @@
 /// @description player_idle_state
 
 check_movement();
-check_dodge();
 check_jump();
-check_attack();
+check_suicide();
+if (state == IDLE)
+	check_dodge();
+if (state == IDLE)
+	check_attack();
