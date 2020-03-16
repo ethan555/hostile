@@ -8,7 +8,7 @@ if (!on_land) {
 }
 
 emit_dust(1);
-	
+
 if (animation_hit_frame(ATTACK_HIT_INDEX)) {
 	// Hitbox!
 }

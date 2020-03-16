@@ -18,5 +18,6 @@ if (in[attack]) {
 		change_sprite(SWING_JUMP,0,ATTACK_IMAGE_SPEED);
 	state = SWING_BACK;
 	weapon_sprite_index = SWORD_SWING_BACK;
+	reset_last_pressed();
 }
 #endregion

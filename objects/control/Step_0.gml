@@ -1,5 +1,7 @@
 /// @description Get input
 
+any = keyboard_check_pressed(vk_anykey);
+
 escape = keyboard_check_pressed(esc);
 if (s != noone) {
 	suicide = keyboard_check_pressed(s);

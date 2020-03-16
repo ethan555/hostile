@@ -1,6 +1,12 @@
 /// Macros
 #macro VIEW_STANDARD_WIDTH 800
 #macro VIEW_STANDARD_HEIGHT 450
+#macro VIEW_SUPER_WIDTH 800
+#macro VIEW_SUPER_HEIGHT 450
+
+#macro ZOOM_IN .5
+#macro ZOOM_OUT 2
+#macro ZOOM_SPD .1
 
 #macro IDLE 0
 #macro RUN 1
@@ -60,3 +66,21 @@
 #macro BACKGROUND_DEPTH1 1000
 #macro BACKGROUND_DEPTH2 2000
 #macro BACKGROUND_DEPTH3 3000
+
+#macro D_STOP "s"
+#macro D_CONTINUE_AT_END "c"
+#macro D_PAUSE_SHORT ","
+#macro D_PAUSE_MEDIUM "."
+#macro D_PAUSE_LONG "/"
+#macro D_PAUSE_SHORT_TIME seconds_to_frames(.1)
+#macro D_PAUSE_MEDIUM_TIME seconds_to_frames(.2)
+#macro D_PAUSE_LONG_TIME seconds_to_frames(.3)
+#macro D_FAST "3"
+#macro D_MEDIUM "2"
+#macro D_SLOW "1"
+
+#macro D_SLOW_SPEED .25
+#macro D_MEDIUM_SPEED .5
+#macro D_FAST_SPEED 1
+
+#macro TEXT_MARGIN 8

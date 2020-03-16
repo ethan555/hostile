@@ -12,6 +12,17 @@ if (monitorw >= 1600 && monitorh >= 900) {
 	xoffset = (monitorw - 1600) / 2;
 	yoffset = (monitorh - 900) / 2;
 }*/
+globalvar monitorw, monitorh, wmult, hmult;
+monitorw = display_get_width();
+monitorh = display_get_height();
+window_set_size(monitorw, monitorh);
+wmult = 2;
+hmult = 2;
+if (monitorw <= 1920/2 && monitorh <= 1080/2) {
+	wmult = 1;
+	hmult = 1;
+}
+surface_resize(application_surface, monitorw / wmult, monitorh / hmult);
 window_set_fullscreen(true);
 
 room_goto_next();

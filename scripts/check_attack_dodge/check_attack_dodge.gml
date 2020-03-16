@@ -18,5 +18,6 @@ if (in[attack]) {
 		state = SWING;
 		weapon_sprite_index = SWORD_SWING;
 	}
+	reset_last_pressed();
 }
 #endregion

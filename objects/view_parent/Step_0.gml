@@ -11,6 +11,3 @@ y = lerp(y, target[? "y"], spd);
 camera_set_view_pos(view_camera[0],
     x - width/2 + irandom_range(-screenshake, screenshake),
     y - height/2 + irandom_range(-screenshake, screenshake));
-
-
-

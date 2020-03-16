@@ -2,18 +2,7 @@
 
 #region Get inputs
 //var escape, suicide, left, right, jump, down, dodge, attack, block;
-
-in[escape] = control.escape;
-in[suicide] = control.suicide && !escape;
-in[left] = control.left;
-in[right] = control.right;
-in[down] = control.down;
-in[up] = control.up;
-in[jump] = control.jump;
-in[dodge] = control.dodge;
-in[attack] = control.attack;
-in[block] = control.block;
-
+get_player_input();
 get_last_pressed();
 
 /*if (in[block]) {

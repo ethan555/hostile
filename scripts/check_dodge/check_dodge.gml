@@ -11,6 +11,7 @@ if (in[dodge]) {
 		state = DODGE;
 		emit_dust(10);
 		weapon_sprite_index = SWORD_NONE;
+		reset_last_pressed();
 	}
 }
 #endregion

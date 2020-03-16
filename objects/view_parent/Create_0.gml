@@ -4,8 +4,8 @@ target = ds_map_create();
 target[? "x"] = 0;
 target[? "y"] = 0;
 
-standard_width = VIEW_STANDARD_WIDTH;
-standard_height = VIEW_STANDARD_HEIGHT;
+standard_width = monitorw / wmult;
+standard_height = monitorh / hmult;
 width = standard_width;
 height = standard_height;
 

@@ -8,4 +8,10 @@ if (xspd != 0) {
 	    xspd = 0;
 	}
 }
+
+if (!on_land) {
+	change_sprite(SWING_JUMP,-1,ATTACK_IMAGE_SPEED);
+	state = SWING;
+	weapon_sprite_index = SWORD_SWING;
+}
 #endregion

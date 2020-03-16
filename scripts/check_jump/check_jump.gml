@@ -20,6 +20,7 @@ if (on_land) {
 	    }
 		change_sprite(JUMP,0,0);
 		emit_dust(10);
+		reset_last_pressed();
 	}
 } else {
 	var index = 0;
