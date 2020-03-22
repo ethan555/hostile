@@ -1,7 +1,8 @@
-/// @description Insert description here
-// You can write your code in this editor
+/// @description Init enemy
 
 // Inherit the parent event
 event_inherited();
 
-
+ai = enemy_ai;
+move = false;
+target = player;

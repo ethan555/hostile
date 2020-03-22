@@ -84,3 +84,7 @@
 #macro D_FAST_SPEED 1
 
 #macro TEXT_MARGIN 8
+#macro TEXT_SIZE 1
+
+#macro ENEMY_MOVE_TIMER seconds_to_frames(.5)
+#macro ENEMY_TARGET_DISTANCE 64

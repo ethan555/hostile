@@ -1,4 +1,4 @@
-/// @description Check physics and update emitter
+/// @description Check physics and update emitter, Get inputs
 
 // Inherit the parent event
 event_inherited();

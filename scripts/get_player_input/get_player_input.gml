@@ -1,5 +1,5 @@
 /// @description get_player_input
-if (!instance_exists(dialogue_box)) {
+if (!instance_exists(ui_parent)) {
 	in[escape] = control.escape;
 	in[suicide] = control.suicide && !escape;
 	in[left] = control.left;
