@@ -1,6 +1,10 @@
 /// @description Check for collisions with target
 
 #region Move to parent
+if (!instance_exists(parent)) {
+	instance_destroy();
+	return;
+}
 x = parent.x + xoffset;
 y = parent.y + yoffset;
 #endregion

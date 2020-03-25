@@ -11,6 +11,7 @@ emit_dust(1);
 
 if (animation_hit_frame(ATTACK_HIT_INDEX)) {
 	// Hitbox!
+	create_hitbox(LA_X * facing,LA_Y,LA_XSCALE * facing,LA_YSCALE,target,SWING_LIFESPAN,LA_DAMAGE,LA_XHIT * facing,LA_YHIT,SWING_BLOCKABLE);
 }
 else if (animation_end()) {
 	// Go back to idle state

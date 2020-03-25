@@ -21,3 +21,8 @@ if (weapon_sprite_index != SWORD_NONE) {
 	draw_sprite_ext(weapon_sprite[weapon_sprite_index],image_index,xx+facing*wx,yy+wy,facing*image_xscale,image_yscale,image_angle,image_blend,image_alpha);
 }
 shader_reset();
+
+if (debug) {
+	draw_set_color(c_white);
+	draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
+}

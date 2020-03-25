@@ -1,6 +1,7 @@
 /// @description player_swing_state
 
 check_jumping_movement();
+check_target_distance();
 if (on_land) {
 	if (yspdold > LANDSPEED) {
 		xspd = 0;
@@ -22,6 +23,7 @@ if (on_land) {
 	
 if (animation_hit_frame(ATTACK_HIT_INDEX)) {
 	// Hitbox!
+	create_hitbox(LA_X * facing,LA_Y,LA_XSCALE * facing,LA_YSCALE,target,SWING_LIFESPAN,LA_DAMAGE,LA_XHIT * facing,LA_YHIT,SWING_BLOCKABLE);
 }
 else if (animation_end()) {
 	// Go back to idle state

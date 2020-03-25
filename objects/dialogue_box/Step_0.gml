@@ -59,10 +59,15 @@ if (text_continue) {
 		// Reached the end of the text, stop going
 		text_continue = false;
 		alarm[0] = -1;
+		
+		// If there are dialogue options, and we are the last dialogue box, show the options
+		if (ds_queue_size(dialogue_queue) == 0 && ds_queue_size(dialogue_options_queue) > 0) {
+			create_dialogue_options_box();
+		}
 	}
 	else if (text_index > length + 1) {
-		// Go to the next dialogue
-		if (ds_queue_size(dialogue_queue) > 0) {
+		// Go to the next dialogue IF we are the only dialogue box
+		if (ds_queue_size(dialogue_queue) > 0 && instance_number(dialogue_box) == 1) {
 			create_dialogue_box();
 		}
 		instance_destroy();
@@ -94,6 +99,11 @@ if (any) {
 		}
 		alarm[0] = -1;
 		text_continue = false;
+		
+		// If there are dialogue options, and we are the last dialogue box, show the options
+		if (ds_queue_size(dialogue_queue) == 0 && ds_queue_size(dialogue_options_queue) > 0) {
+			create_dialogue_options_box();
+		}
 	}
 	else {
 		// Continue text

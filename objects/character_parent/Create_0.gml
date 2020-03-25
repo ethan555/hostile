@@ -10,6 +10,7 @@ xspd = 0;
 yspd = 0;
 
 facing = 1;
+target = enemy;
 
 var i = 0;
 escape = i++;

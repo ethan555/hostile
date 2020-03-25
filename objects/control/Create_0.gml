@@ -1,5 +1,8 @@
 /// @description Create the important objects
 
+globalvar debug;
+debug = true;
+
 globalvar font;
 font = font_add_sprite_ext(font_sp,"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=+.!?,\"'",false,2);
 draw_set_font(font);
@@ -23,8 +26,9 @@ draw_set_font(font);
 globalvar max_line_length;
 max_line_length = (display_get_gui_width() - TEXT_MARGIN * 2) / string_width("A");
 
-globalvar dialogue_queue;
+globalvar dialogue_queue, dialogue_options_queue;
 dialogue_queue = ds_queue_create();
+dialogue_options_queue = ds_queue_create();
 
 instance_create_depth(x,y,depth,particle_control);
 instance_create_depth(x,y,depth,audio_player);
@@ -48,7 +52,9 @@ suicide = false;
 left = false;
 right = false;
 down = false;
+down_pressed = false;
 up = false;
+up_pressed = false;
 jump = false;
 dodge = false;
 attack = false;
