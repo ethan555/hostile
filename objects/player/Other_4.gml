@@ -14,7 +14,5 @@ if (instance_exists(entrance)) {
     }
 }
 
-stasis = false;
-
 // Update last room
 last_room = room;

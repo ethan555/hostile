@@ -1,4 +1,4 @@
-/// @description player_swing_back_state
+/// @description enemy_swing_back_state
 
 check_jumping_movement();
 check_target_distance();
@@ -18,6 +18,7 @@ else if (animation_end()) {
 	weapon_sprite_index = SWORD_NONE;
 	change_sprite(IDLE,0,0);
 	state = IDLE;
+	reset_enemy_move();
 }
 else if (image_index >= ATTACK_CHAIN_INDEX) {
 	if (on_land) {

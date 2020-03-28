@@ -15,4 +15,5 @@ up_pressed = keyboard_check_pressed(u);
 jump = keyboard_check_pressed(jup);
 dodge = keyboard_check_pressed(dod) || keyboard_check_pressed(dod2);
 attack = keyboard_check_pressed(a);
-block = keyboard_check_pressed(b);
+block = keyboard_check(b);
+block_pressed = keyboard_check_pressed(b);

@@ -7,7 +7,7 @@
 
 var frame = argument[0]; // The frame to check for
 var result = false;
-if (image_speed > 0)
+if (image_speed >= 0)
     result = (image_index >= frame - image_speed) && (image_index < frame);//(image_index >= frame+1 - image_speed) && (image_index < frame+1);
 else
     result = (image_index <= frame - image_speed) && (image_index > frame);

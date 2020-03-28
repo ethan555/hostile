@@ -59,6 +59,7 @@ jump = false;
 dodge = false;
 attack = false;
 block = false;
+block_pressed = false;
 
 globalvar rock_mass;
 rock_mass = 1;

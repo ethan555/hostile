@@ -10,6 +10,7 @@ if (!instance_exists(ui_parent)) {
 	in[dodge] = control.dodge;
 	in[attack] = control.attack;
 	in[block] = control.block;
+	in[block_pressed] = control.block_pressed;
 } else {
 	in[escape] = false;
 	in[suicide] = false;
@@ -21,4 +22,5 @@ if (!instance_exists(ui_parent)) {
 	in[dodge] = false;
 	in[attack] = false;
 	in[block] = false;
+	in[block_pressed] = false;
 }

@@ -24,6 +24,7 @@ jump = i++;
 dodge = i++;
 attack = i++;
 block = i++;
+block_pressed = i++;
 
 in[escape] = 0;
 in[suicide] = 0;
@@ -35,6 +36,7 @@ in[jump] = 0;
 in[dodge] = 0;
 in[attack] = 0;
 in[block] = 0;
+in[block_pressed] = 0;
 
 on_land = check_land();
 crouching = false;
@@ -51,6 +53,10 @@ states[DIE] = player_die_state;
 states[SUICIDE] = player_suicide_state;
 states[SWING_BACK] = player_swing_back_state;
 states[SWING_CROUCH] = player_swing_crouch_state;
+states[BLOCK] = player_block_state;
+states[BLOCK_RELEASE] = player_block_release_state;
+states[HURT] = player_hurt_state;
+states[PARRY] = player_parry_state;
 
 image_speed = 0;
 
@@ -62,6 +68,7 @@ sprite[SWING] = player_swing_sp;
 sprite[SWING_JUMP] = player_swing_jump_sp;
 sprite[SWING_CROUCH] = player_swing_crouch_sp;
 sprite[BLOCK] = player_block_sp;
+sprite[BLOCK_RELEASE] = player_block_release_sp;
 sprite[PARRY] = player_parry_sp;
 sprite[CROUCH] = player_crouch_sp;
 sprite[JUMP] = player_jump_sp;

@@ -9,6 +9,7 @@ if (in[attack]) {
 		if (!crouching) {
 			change_sprite(SWING_BACK,0,ATTACK_IMAGE_SPEED);
 			xspd = facing * ATTACK_BACKSPEED;//* (image_number - image_index);
+			check_target_distance();
 			
 			emit_dust(5);
 		} else

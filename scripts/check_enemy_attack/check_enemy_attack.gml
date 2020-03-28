@@ -1,4 +1,4 @@
-/// @description check_attack
+/// @description check_enemy_attack
 
 #region If attacking, attack
 if (in[attack]) {
@@ -7,9 +7,17 @@ if (in[attack]) {
 	}
 	if (on_land) {
 		if (!crouching) {
-			change_sprite(SWING,0,ATTACK_IMAGE_SPEED);
-			xspd = facing * ATTACKSPEED;//* (image_number - image_index);
-			check_target_distance();
+			// Decide which sequence we will do
+			var attack_index = irandom(ENEMY_ATTACK_NUMBER);
+			switch (attack_index) {
+				case 0:
+					change_sprite(SWING,0,ATTACK_IMAGE_SPEED);
+					xspd = facing * ATTACKSPEED;//* (image_number - image_index);
+					check_target_distance();
+					break;
+				case 1:
+					
+			}
 			
 			emit_dust(5);
 		} else

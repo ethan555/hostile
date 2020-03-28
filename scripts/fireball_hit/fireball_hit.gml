@@ -1,0 +1,3 @@
+///@function fireball_hit
+
+

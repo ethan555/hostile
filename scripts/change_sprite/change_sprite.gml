@@ -6,7 +6,8 @@ var sprite_array_index = argument0;
 var index = argument1;
 var ispd = argument2;
 
-sprite_index = sprite[sprite_array_index];
+if (sprite_array_index != -1)
+	sprite_index = sprite[sprite_array_index];
 if (index != -1)
     image_index = index;
 if (ispd != -1)
