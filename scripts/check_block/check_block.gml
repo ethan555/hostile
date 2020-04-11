@@ -1,7 +1,7 @@
 /// @description check_attack
 
 #region If attacking, attack
-if (in[block]) {
+if (in[block_pressed]) {
 	if ((in[left] || in[right]) && !(in[left] && in[right])) {
 		facing = -in[left] + in[right];
 	}
@@ -10,6 +10,7 @@ if (in[block]) {
 		emit_dust(5);
 		state = BLOCK;
 		reset_last_pressed();
+		weapon_sprite_index = SWORD_NONE;
 	}
 }
 #endregion

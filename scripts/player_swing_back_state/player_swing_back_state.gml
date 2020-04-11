@@ -21,6 +21,7 @@ else if (animation_end()) {
 }
 else if (image_index >= ATTACK_CHAIN_INDEX) {
 	if (on_land) {
+		check_block();
 		check_dodge();
 	}
 }

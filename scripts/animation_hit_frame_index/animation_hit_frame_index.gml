@@ -14,7 +14,7 @@ var img_speed = argument[i++];  // The image speed
 
 var result = false;
 if (img_speed > 0)
-    result = (index >= frame - img_speed) && (index < frame);
+    result = (index >= frame - get_image_fps_speed(img_speed)) && (index < frame);
 else
-    result = (index <= frame - img_speed) && (index > frame);
+    result = (index <= frame - get_image_fps_speed(img_speed)) && (index > frame);
 return result;

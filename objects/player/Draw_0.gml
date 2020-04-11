@@ -25,4 +25,17 @@ shader_reset();
 if (debug) {
 	draw_set_color(c_white);
 	draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
+	
+	/*shader_set(aurora_sh);
+	var time = shader_get_uniform(aurora_sh,"time");
+	shader_set_uniform_f(time,current_time * .1 * (1/1000));
+	var resolution = shader_get_uniform(aurora_sh,"resolution");
+	var rec_width = display_get_gui_width() * 4, rec_height = display_get_gui_height() * 4;
+	var res_array;
+	res_array[0] = rec_width;
+	res_array[1] = rec_height;
+	shader_set_uniform_f_array(resolution,res_array);
+	draw_set_color(c_white);
+	draw_rectangle(0,0,rec_width,rec_height, false);
+	shader_reset();*/
 }

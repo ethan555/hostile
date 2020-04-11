@@ -9,12 +9,12 @@ if (in[suicide] && last_pressed != suicide) {
 else if (in[dodge] && last_pressed != dodge) {
 	last_pressed = dodge;
 }
-/*else if (in[block_pressed] && last_pressed != block_pressed) {
+else if (in[block_pressed] && last_pressed != block_pressed) {
 	last_pressed = block_pressed;
-}*/
-else if (in[block] && last_pressed != block) {
-	last_pressed = block;
 }
+/*else if (in[block] && last_pressed != block) {
+	last_pressed = block;
+}*/
 else if (in[jump] && last_pressed != jump) {
 	last_pressed = jump;
 }

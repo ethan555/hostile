@@ -10,7 +10,7 @@ with (hit_inst) {
 	var amount_ = 1, xdelta = other.xhit;
 	if (state == BLOCK) {
 		// Parry?
-		if (image_index < PARRY_INDEX + 1) {
+		//if (image_index < PARRY_INDEX + 1) {
 			if (other.parent.state == SWING_BACK) {
 				change_sprite(PARRY_BACK, 0, PARRY_IMAGE_SPEED);
 			}
@@ -20,10 +20,11 @@ with (hit_inst) {
 			state = PARRY;
 			amount_ = .5;
 			with (other.parent) {
-				xspd = -facing * PARRIED_SPEED_LIGHT * amount_;
-				change_sprite(-1, -1, PARRIED_IMAGE_SPEED);
+				//yspd = -100;
+				xspd = -facing * PARRIED_SPEED_LIGHT;
+				change_sprite(-1, round(image_index), PARRIED_IMAGE_SPEED);
 			}
-		}
+		/*}
 		// Block?
 		else {
 			change_sprite(BLOCK, 1, BLOCK_IMAGE_SPEED);
@@ -32,16 +33,16 @@ with (hit_inst) {
 			with (other.parent) {
 				xspd = -xdelta * amount_;
 			}
-		}
+		}*/
 	}
-	else if (state == BLOCK_RELEASE) {
+	/*else if (state == BLOCK_RELEASE) {
 		change_sprite(BLOCK, 1, BLOCK_IMAGE_SPEED);
 		state = BLOCK;
 		amount_ = .5;
 		with (other.parent) {
 			xspd = -xdelta * amount_;
 		}
-	}
+	}*/
 	else {
 		hp -= other.damage;
 		weapon_sprite_index = SWORD_NONE;
