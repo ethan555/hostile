@@ -1,10 +1,10 @@
 /// @description Draw with shader
 
-shader_set(aurora_sh);
+shader_set(shader);
 shader_set_uniform_f(time,current_time * aurora_speed * (1/1000));
-var res_array, v_res_array;
-res_array[0] = min(sprite_get_width(sprite_index) * 4, sprite_width);//sprite_get_width(sprite_index) * 4;//display_get_gui_width() * 4;//sprite_get_width(sprite_index);//sprite_width;
-res_array[1] = min(sprite_get_height(sprite_index) * 4, sprite_height);//sprite_get_height(sprite_index) * 4;//display_get_gui_height() * 4;//sprite_get_height(sprite_index);// sprite_height;
+var res_array;
+res_array[0] = sprite_w;//sprite_get_width(sprite_index) * 4;//display_get_gui_width() * 4;//sprite_get_width(sprite_index);//sprite_width;
+res_array[1] = sprite_h;//sprite_get_height(sprite_index) * 4;//display_get_gui_height() * 4;//sprite_get_height(sprite_index);// sprite_height;
 //res_array[0] = display_get_gui_width();//display_get_gui_width() * 4;//sprite_get_width(sprite_index);//sprite_width;
 //res_array[1] = display_get_gui_height();//display_get_gui_height() * 4;//sprite_get_height(sprite_index);// sprite_height;
 

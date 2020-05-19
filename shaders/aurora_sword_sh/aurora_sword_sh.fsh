@@ -14,6 +14,8 @@ varying vec4 v_vColour;
 
 uniform float time;
 uniform vec2 resolution;
+uniform float pixel_width;
+uniform float pixel_height;
 
 float random(vec2 st) {
 	return fract(sin(dot(st.xy, vec2(12.9898,78.233)))* 43758.5453123);
@@ -79,28 +81,41 @@ float gradient_octaves(vec3 st) {
 }
 
 void main( void ) {
+	vec2 internal_position_ = vec2(v_vTexcoord.xy) * resolution.y * 10.;
 	vec2 position = gl_FragCoord.xy / resolution.y;
 
-	vec4 color = vec4(0., 0., 0., 0.);
+	vec4 color = v_vColour * texture2D( gm_BaseTexture, v_vTexcoord );
 	float t = mod(time*0.15, 10000.);
 	float t2 = mod(time*0.00001, 10000.);
 	float wave = gradient2D(vec2(position.x*.25,t2));
-	vec3 starposition = vec3(position * 1000., t2);
+	//vec3 starposition = vec3(position * 1000., t2);
 	position.y += wave;
-	float value = (.5 + gradient_octaves(vec3(position.x*8., position.x*2.+position.y/6., t))*.5);
-
-	float ycheat = .95;
-	value = value*((pow(sin(ycheat+position.y*3.5)*.5+.5,10.))*.5 +
-			(pow(sin(ycheat+position.y*1.5)*.5+.5,8.))*.5);
+	float value = smoothstep(0., 1., (.5 + gradient_octaves(vec3(position.x*8., position.x*2.+position.y/6., t))*.5));
+	
+	vec2 offsetx;
+	offsetx.x = pixel_width;
+	vec2 offsety;
+	offsety.y = pixel_height;
+	float alpha = (1. - texture2D( gm_BaseTexture, v_vTexcoord + offsetx ).a);
+	alpha += (1. - texture2D( gm_BaseTexture, v_vTexcoord - offsetx ).a);
+	alpha += (1. - texture2D( gm_BaseTexture, v_vTexcoord + offsety ).a);
+	alpha += (1. - texture2D( gm_BaseTexture, v_vTexcoord - offsety ).a);
+	float max_add = .25;
+	alpha = clamp(alpha, 0., max_add);
+	
+	float ycheat = -.95;
+	value = smoothstep(0., 1., value*((pow(sin(ycheat+position.y*3.5)*.5+.5,10.)*2.)*.5 +
+			(pow(sin(ycheat+position.y*1.5)*.5+.5,8.)*2.)*.5));
 	vec3 color_dist = vec3(0.1, .9, .6);
 
-	float starvalue = 0.;
+	/*float starvalue = 0.;
 	vec3 stars = vec3(0.);
 	starvalue = pow(.75 + gradient_octaves(starposition)*.5, 1.);
 	stars = mix(vec3(0.,0.,0.), vec3(1.,1.,1.), smoothstep(0.99, 1.0, vec3(starvalue)));
-	stars = clamp(stars, 0.0, 1.0);
-	color.rgb = color_dist * vec3(value, pow(value, 2.)*2., value) + stars;
-	color.a = value;
+	stars = clamp(stars, 0.0, 1.0);*/
+	color = vec4(alpha + color_dist * vec3(value, pow(value, 2.)*2., value), color.a);// + stars;
+	
+	//color.a = max(alpha, min(color.a, smoothstep(0., 1., value)));
 
 	gl_FragColor = color;
 

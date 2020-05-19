@@ -9,11 +9,18 @@ attribute vec2 in_TextureCoord;              // (u,v)
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
+uniform vec2 v_resolution;
+
+varying vec3 internal_position;
+
 void main()
 {
     vec4 object_space_pos = vec4( in_Position.x, in_Position.y, in_Position.z, 1.0);
     gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * object_space_pos;
     
+	internal_position = vec3((in_Position.xy), 0.);
+	internal_position.y = min(internal_position.y, 370.);
+	
     v_vColour = in_Colour;
     v_vTexcoord = in_TextureCoord;
 }
