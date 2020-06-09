@@ -1,8 +1,13 @@
 /// @description Create the important objects
 
+randomize();
+
 globalvar debug;
 debug = true;
 
+/*globalvar outline_surface;
+outline_surface = surface_create(surface_get_width(application_surface), surface_get_height(application_surface));
+*/
 globalvar font;
 font = font_add_sprite_ext(font_sp,"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=+.!?,\"'",false,2);
 draw_set_font(font);

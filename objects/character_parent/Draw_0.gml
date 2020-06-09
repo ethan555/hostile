@@ -4,7 +4,11 @@ xx = round(x);
 yy = round(y);
 
 // Draw self
-shader_set(colorize_sh);
+shader_set(shader);
+
+shader_set_uniform_f(pixel_width, texel_width);
+shader_set_uniform_f(pixel_height, texel_height);
+
 draw_sprite_ext(sprite_index,image_index,xx,yy,facing*image_xscale,image_yscale,image_angle,image_blend,image_alpha);
 
 shader_set(weapon_shader);

@@ -8,8 +8,9 @@ if (in[attack]) {
 	if (on_land) {
 		if (!crouching) {
 			change_sprite(SWING,0,ATTACK_IMAGE_SPEED);
-			xspd = facing * ATTACKSPEED;//* (image_number - image_index);
-			check_target_distance();
+			//xspd = facing * ATTACKSPEED;//* (image_number - image_index);
+			xspd = 0;
+			//check_target_distance();
 			
 			emit_dust(5);
 		} else

@@ -30,9 +30,15 @@ in[jump] = target.y < y;
 in[dodge] = 0;
 
 // Attack if the player is in range and isn't attacking us
-in[attack] = target_distance < ENEMY_TARGET_DISTANCE;
+if (can_attack && target_distance < ENEMY_TARGET_DISTANCE) {
+	in[attack] = 1;
+	in[left] = target_direction < 0;
+	in[right] = target_direction > 0;
+	can_attack = false;
+	alarm[5] = 7;
+}
 
 // Block if we have the stamina
-in[block] = 0;
-
-
+//if (target_distance < ENEMY_TARGET_DISTANCE && (target.state == SWING || target.state == SWING_BACK) {
+in[block_pressed] = target_distance < ENEMY_TARGET_DISTANCE && (target.state == SWING || target.state == SWING_BACK) && target.image_index < ATTACK_HIT_INDEX;
+//}

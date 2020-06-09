@@ -8,7 +8,7 @@ with (hit_inst) {
 	facing = -sign(other.xhit);
 	if (facing == 0) facing = 1;
 	var amount_ = 1, xdelta = other.xhit;
-	if (state == BLOCK) {
+	if (state == BLOCK || state == PARRY || state == PARRY_BACK) {
 		// Parry?
 		//if (image_index < PARRY_INDEX + 1) {
 			if (other.parent.state == SWING_BACK) {
@@ -19,6 +19,10 @@ with (hit_inst) {
 			}
 			state = PARRY;
 			amount_ = .5;
+			
+			var rand = 4;
+			part_particles_create(part_system, x + facing * random(rand), y - rand/2 + random(rand), part_spark, 5+irandom(rand));
+			
 			with (other.parent) {
 				//yspd = -100;
 				xspd = -facing * PARRIED_SPEED_LIGHT;
@@ -45,6 +49,7 @@ with (hit_inst) {
 	}*/
 	else {
 		hp -= other.damage;
+		reset_last_pressed();
 		weapon_sprite_index = SWORD_NONE;
 		if (other.yhit != 0) {
 			state = THROWN;
@@ -52,8 +57,9 @@ with (hit_inst) {
 			yspd = other.yhit;
 		}
 		else {
+			var t = 1/get_image_fps_speed(abs(xdelta) * amount_ / friction);
 			state = HURT;
-			change_sprite(state, 0, 0);
+			change_sprite(state, 0, t);//HURT_SPEED);
 		}
 	}
 	xspd = xdelta * amount_;

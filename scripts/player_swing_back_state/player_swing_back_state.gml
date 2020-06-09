@@ -11,6 +11,9 @@ if (on_land) {
 	
 if (animation_hit_frame(ATTACK_HIT_INDEX)) {
 	// Hitbox!
+	emit_dust(7);
+	change_sprite(state, -1, ATTACK_IMAGE_SPEED_AFTER);
+	xspd = facing * ATTACKSPEED;
 	create_hitbox(LA_X * facing,LA_Y,LA_XSCALE * facing,LA_YSCALE,target,SWING_LIFESPAN,LA_DAMAGE,LA_XHIT * facing,LA_YHIT,SWING_BLOCKABLE);
 }
 else if (animation_end()) {

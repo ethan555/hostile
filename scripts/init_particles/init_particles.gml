@@ -17,8 +17,8 @@ part_type_shape(part_spark,pt_shape_pixel);
 part_type_alpha2(part_spark,1,0);
 part_type_color_hsv(part_spark,0,0,0,0,240,255);
 part_type_direction(part_spark,0,180,.01,0);
-part_type_speed(part_spark,5,10,.01,0);
-part_type_gravity(part_spark,.5,270);
+part_type_speed(part_spark,5,10,-.5,0);
+part_type_gravity(part_spark,.15,270);
 part_type_life(part_spark,seconds_to_frames(.1),seconds_to_frames(.2));
 part_type_step(part_spark,1,part_trail);
 

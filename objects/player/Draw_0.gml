@@ -4,7 +4,7 @@ xx = round(x);
 yy = round(y);
 
 // Draw self
-shader_set(colorize_sh);
+shader_set(shader);
 draw_sprite_ext(sprite_index,image_index,xx,yy,facing*image_xscale,image_yscale,image_angle,image_blend,image_alpha);
 /*shader_reset();
 
