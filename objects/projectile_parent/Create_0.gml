@@ -8,3 +8,9 @@ sprite[PROJECTILE_MID] = fireball_sp;
 sprite[PROJECTILE_HIT] = fireball_hit_sp;
 
 hit_script = fireball_hit;
+hit = false;
+
+alarm[0] = lifespan;
+
+emitter = part_emitter_create(part_system);
+hit_particle = part_flame;

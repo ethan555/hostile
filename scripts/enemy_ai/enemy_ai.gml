@@ -18,6 +18,10 @@ in[left] = (target_direction < 0 && target_distance > desired_distance_max)
 in[right] = (target_direction > 0 && target_distance > desired_distance_max)
 	|| (target_direction < 0 && target_distance < desired_distance_min);// && target_distance > ENEMY_TARGET_DISTANCE;
 
+facing = target_direction;
+if (facing == 0) {
+	facing = 1;
+}
 /*
 in[down] = 0;
 in[up] = 0;

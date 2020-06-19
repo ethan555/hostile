@@ -13,6 +13,9 @@ facing = 1;
 target = enemy;
 shader = outline_sh;
 
+projectile_y = -4;
+projectile_x = 2;
+
 var i = 0;
 escape = i++;
 suicide = i++;

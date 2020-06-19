@@ -35,7 +35,7 @@ globalvar dialogue_queue, dialogue_options_queue;
 dialogue_queue = ds_queue_create();
 dialogue_options_queue = ds_queue_create();
 
-instance_create_depth(x,y,depth,particle_control);
+instance_create_depth(x,y,-1000,particle_control);
 instance_create_depth(x,y,depth,audio_player);
 
 esc = vk_escape;

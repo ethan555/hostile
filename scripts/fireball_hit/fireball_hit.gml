@@ -13,8 +13,10 @@ create_hitbox(
 	hitbox_lifespan,
 	damage,
 	lengthdir_x(xhit,image_angle),
-	lengthdir_y(yhit,image_angle),
+	yhit,//lengthdir_y(yhit,image_angle),
 	blockable
 );
+
+part_emitter_burst(part_system,emitter,hit_particle,irandom_range(part_min, part_max));
 
 // Play fireball audio

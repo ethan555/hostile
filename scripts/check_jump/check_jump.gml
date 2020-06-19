@@ -16,6 +16,7 @@ if (on_land) {
 	    if (in[down] && l_below) {
 	        y += 1;
 	    } else {
+			y = floor(y);
 	        yspd = -JUMPSPEED;
 	    }
 		change_sprite(JUMP,0,0);

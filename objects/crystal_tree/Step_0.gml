@@ -22,10 +22,11 @@ for (var length = ds_list_size(spark_list), i = length - spark_num; i >= 0; i-= 
 	if (random(size) < chance / (size * spark_scale)) {
 		if (size > 1) {
 			// split
-			if (branches < num_branches) {
+			if (alarm[1] < 1 && branches < num_branches) {
 				ds_list_add(spark_list,xx,yy,size-random(1),-dir, random(5)+10*spark_scale);
 				spark_list[| size_] = size - random(1);
 				branches += rate/size;
+				alarm[1] = random(seconds_to_frames(1))*size;
 			} else {
 				spark_list[| dir_] = -dir;
 			}
