@@ -14,6 +14,8 @@ varying vec4 v_vColour;
 
 uniform float time;
 uniform vec2 resolution;
+uniform float xpos;
+uniform float ypos;
 
 float random(vec2 st) {
 	return fract(sin(dot(st.xy, vec2(12.9898,78.233)))* 43758.5453123);
@@ -57,7 +59,7 @@ float gradient_octaves(vec3 st, int octaves) {
 void main( void ) {
 
 	float scale = 10.;
-	vec2 center = vec2(.5, (.25 * resolution.y / resolution.x));
+	vec2 center = vec2(xpos, (ypos * resolution.y / resolution.x));
 
 	float pix_scale = 1.;
 	float eclipse_scale = 2.;
@@ -66,13 +68,19 @@ void main( void ) {
 
 	vec4 color = vec4(0., 0., 0., 1.);
 	float t = mod(time*0.15, 10000.);
-	float t2 = mod(time*0.025, 10000.);
+	float t2 = mod(time*0.125, 10000.);
 
 	float dist = distance(eclipse_position.xy, center)*scale;
 	vec3 randposition = vec3(position * 5.+500., t);
 	float value = 2.*pow(6.*pow(.5 + gradient_octaves(randposition, 2)*.5, 6.), 2.);
-	float starvalue = 0.;
+	float spacevalue = value*10.;
+    float starvalue = 0.;
+    float beltvalue = 0.;
 	vec3 stars = vec3(0.);
+    vec3 belt = vec3(0.);
+	float beltpresence = 0.;
+	float cloud = 6.*pow(.5 + gradient_octaves(randposition, 2)*.5, 8.);
+	
 	float eclipsedist = .1;
 	if (dist < eclipsedist * scale) {
 		value *= pow(dist/(eclipsedist * scale),7.) * scale;
@@ -80,16 +88,27 @@ void main( void ) {
 		value *= ((eclipsedist * scale) / (dist - eclipsedist));
 		value *= pow((eclipsedist * scale)/dist, 7.) * scale;
 
-		vec3 starposition = vec3(position * 5000., t2);
+		vec3 starposition = vec3(position * 10000., t2);
 		starvalue = pow(.75 + gradient_octaves(starposition, 2)*.5, 1.);
+		beltpresence = 1.045*sin((position.x+.4) * ((resolution.y / resolution.x) - position.y + ypos/4.)*1.5+1.05);
+		cloud *= beltpresence;
+		beltvalue = starvalue * beltpresence;//1.15);
 		stars = mix(vec3(0.,0.,0.), vec3(1.,1.,1.), smoothstep(0.99, 1.0, vec3(starvalue)));
+        belt = mix(vec3(0.,0.,0.), vec3(1.,1.,1.), smoothstep(0.99, 1.0, vec3(beltvalue)));
 		stars = clamp(stars, 0.0, 1.0);
 	}
 
-	vec3 color_dist = vec3(.6, .2, .85);
-	color.rgb = color_dist * vec3(value);
-	color.rgb += stars;
+	value = max(value, 0.);
 
+    vec3 color_dist = vec3(.35, .2, 1.);
+    color.rgb = color_dist * vec3(value, value, value);
+
+    vec3 star_color_dist = vec3(.1, .4, 1.);
+    vec3 star_color_dist2 = vec3(.35, .1, 1.);
+    color.rgb += star_color_dist * vec3(spacevalue, spacevalue, spacevalue) * stars;
+	color.rgb += star_color_dist2 * spacevalue * belt;
+	color.rgb += mix(star_color_dist * cloud, star_color_dist2 * cloud, pow(beltpresence*.7, 2.));
+	
 	gl_FragColor = color;
 
 }

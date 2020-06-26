@@ -16,6 +16,13 @@ camera_set_view_size(view_camera[0],width,height);
 camera_set_view_pos(view_camera[0],x,y);
 
 // Update target point
-target[? "x"] = x;
-target[? "y"] = y;
+if (instance_exists(player)) {
+	x = player.x;
+	y = player.y;
+	//target[? "x"] = player.x;
+	//target[? "y"] = player.y;
+} else {
+	target[? "x"] = x;
+	target[? "y"] = y;
+}
 script_execute(state);

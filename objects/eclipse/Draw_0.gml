@@ -1,6 +1,8 @@
 /// @description Draw the eclipse
 shader_set(shader);
 shader_set_uniform_f(time,current_time * eclipse_speed * (1/1000));
+shader_set_uniform_f(xpos_,xpos);
+shader_set_uniform_f(ypos_,ypos);
 var res_array;
 res_array[0] = camera_get_view_width(view_camera[0]);//min(sprite_get_width(sprite_index) * 4, sprite_width);
 res_array[1] = camera_get_view_height(view_camera[0]);//min(sprite_get_height(sprite_index) * 4, sprite_height);

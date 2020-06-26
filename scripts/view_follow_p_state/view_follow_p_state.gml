@@ -2,8 +2,11 @@
 
 // follow target
 if (instance_exists(player)) {
-    target[? "x"] = player.x;
-    target[? "y"] = player.y;
+    target[? "x"] = round(player.x);
+    target[? "y"] = round(player.y);
+} else if (instance_exists(character_parent)) {
+    target[? "x"] = round(character_parent.x);
+    target[? "y"] = round(character_parent.y);
 }
 
 if (mouse_wheel_up()) { // Zoom in

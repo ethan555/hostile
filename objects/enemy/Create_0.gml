@@ -28,3 +28,10 @@ states[PARRY] = enemy_parry_state;
 states[ENEMY_ATTACK_1] = enemy_attack_1_state;
 states[ENEMY_ATTACK_2] = enemy_attack_2_state;
 states[ENEMY_ATTACK_3] = enemy_attack_3_state;
+
+var tex = sprite_get_texture(sprite_index,0);
+texel_width = texture_get_texel_width(tex);
+texel_height = texture_get_texel_height(tex);
+
+pixel_width = shader_get_uniform(shader,"pixel_width");
+pixel_height = shader_get_uniform(shader,"pixel_height");

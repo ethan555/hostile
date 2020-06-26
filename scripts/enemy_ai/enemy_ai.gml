@@ -1,5 +1,8 @@
 ///@description enemy_ai
 
+if (!instance_exists(target)) {
+	return;	
+}
 /*in[escape] = 0;
 in[suicide] = 0;*/
 for (var i = 0, length = array_length_1d(in); i < length; i++) {

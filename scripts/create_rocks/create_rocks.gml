@@ -28,7 +28,7 @@ number = argument[i++]
 var xdist = abs(x2 - x1)/2;
 var xavg = (x2 + x1) / 2;
 for (i = 0; i < number; i ++) {
-	var r = instance_create_depth(random_range(x1,x2),random_range(y1,y2),ROCK_DEPTH,rock);
+	var r = instance_create_depth(random_range(x1,x2),random_range(y1,y2),depth,rock);
 	with (r) {
 		var xmin = -xspd1 * (xavg - x)/xdist;
 		var xmax = -xspd2 * (xavg - x)/xdist;

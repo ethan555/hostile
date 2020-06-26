@@ -5,6 +5,8 @@ yy = round(y);
 
 // Draw self
 shader_set(shader);
+shader_set_uniform_f(pixel_width, texel_width);
+shader_set_uniform_f(pixel_height, texel_height);
 draw_sprite_ext(sprite_index,image_index,xx,yy,facing*image_xscale,image_yscale,image_angle,image_blend,image_alpha);
 /*shader_reset();
 
@@ -24,8 +26,7 @@ shader_reset();
 
 if (debug) {
 	draw_set_color(c_white);
-	draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
-	
+	draw_rectangle(round(bbox_left), round(bbox_top), round(bbox_right), round(bbox_bottom), true);
 	/*shader_set(aurora_sh);
 	var time = shader_get_uniform(aurora_sh,"time");
 	shader_set_uniform_f(time,current_time * .1 * (1/1000));

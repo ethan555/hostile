@@ -102,6 +102,13 @@ weapon_y = weapon_y_standing;
 weapon_image_index = 0;
 weapon_image_speed = 0;
 weapon_shader = colorize_sh;
+
+var tex = sprite_get_texture(sprite_index,0);
+texel_width = texture_get_texel_width(tex);
+texel_height = texture_get_texel_height(tex);
+
+pixel_width = shader_get_uniform(shader,"pixel_width");
+pixel_height = shader_get_uniform(shader,"pixel_height");
 #endregion
 
 #region Room variables
