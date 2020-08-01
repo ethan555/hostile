@@ -1,6 +1,12 @@
 /// @description increment sparks
-
-for (var length = ds_list_size(spark_list), i = length - spark_num; i >= 0; i-= spark_num) {
+if (done) {
+	return;
+}
+var length = ds_list_size(spark_list);
+if (length == 0) {
+	done = true;
+}
+for (var i = length - spark_num; i >= 0; i-= spark_num) {
 	var xx_ = i, yy_ = i+1, size_ = i+2, dir_ = i+3, split_ = i+4;
 	var xx = spark_list[| xx_];
 	var yy = spark_list[| yy_];
@@ -18,8 +24,11 @@ for (var length = ds_list_size(spark_list), i = length - spark_num; i >= 0; i-= 
 	
 	spark_list[| xx_] = xx + dir * random(spark_speed+max(0,(rate - size) * spark_speed))*1.5;
 	spark_list[| yy_] = yy - random(spark_speed+max(0, (rate - size) * spark_speed))*1.5;
+	part_emitter_region(part_system,emitter,x+xx - width/2 - size * spark_scale,x+xx - width/2 + size * spark_scale,y+yy-height - size * spark_scale,y+yy-height + size * spark_scale,ps_shape_ellipse,ps_distr_linear);
+	
 	
 	if (random(size) < chance / (size * spark_scale)) {
+		create_particles(emitter,part_flamespark_slow,1);
 		if (size > 1) {
 			// split
 			if (alarm[1] < 1 && branches < num_branches) {
@@ -29,6 +38,7 @@ for (var length = ds_list_size(spark_list), i = length - spark_num; i >= 0; i-= 
 				alarm[1] = random(seconds_to_frames(1))*size;
 			} else {
 				spark_list[| dir_] = -dir;
+				alarm[1] --;
 			}
 		} else if (random(size) < chance / (2*size * spark_scale)) {
 			spark_list[| dir_] = -dir;

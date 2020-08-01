@@ -38,7 +38,6 @@ if (yspd != 0) {
             }
         }
         yspd = 0;
-		show_debug_message(string(place_free(x,y)));
     } else {
         var l = instance_place(x,y+yspd,ledge)
         if (l != noone && bbox_bottom < l.bbox_top) {

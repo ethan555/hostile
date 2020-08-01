@@ -3,7 +3,16 @@
 globalvar part_system;
 part_system = part_system_create();
 
-globalvar part_trail, part_spark, part_dust, part_dust_large, part_flame, part_flamespark, part_smoke, part_charge;
+globalvar part_trail,
+	part_spark,
+	part_dust,
+	part_dust_large,
+	part_flame,
+	part_flamespark,
+	part_flamespark_slow,
+	part_flamespark_large,
+	part_smoke,
+	part_charge;
 
 part_trail = part_type_create();
 part_type_shape(part_trail,pt_shape_pixel);
@@ -55,6 +64,25 @@ part_type_gravity(part_flamespark,0,90);
 part_type_alpha2(part_flamespark,1,0);
 part_type_life(part_flamespark,seconds_to_frames(.25),seconds_to_frames(.6));
 //part_type_step(part_flamespark,1,part_trail);
+
+part_flamespark_slow = part_type_create();
+part_type_shape(part_flamespark_slow,pt_shape_pixel);
+part_type_color_hsv(part_flamespark_slow,0,0,0,0,255,255);
+part_type_direction(part_flamespark_slow,45,45,0,10);
+part_type_speed(part_flamespark_slow,.5,.5,-.001,0);
+part_type_gravity(part_flamespark_slow,0,90);
+part_type_alpha3(part_flamespark_slow,0,1,0);
+part_type_life(part_flamespark_slow,seconds_to_frames(2),seconds_to_frames(3));
+
+part_flamespark_large = part_type_create();
+part_type_shape(part_flamespark_large,pt_shape_disk);
+part_type_size(part_flamespark_large,.25,1,0,0);
+part_type_color_hsv(part_flamespark_large,0,255,50,50,255,255);
+part_type_direction(part_flamespark_large,45,45,0,5);
+part_type_speed(part_flamespark_large,.25,.25,-.001,0);
+part_type_gravity(part_flamespark_large,0,90);
+part_type_alpha3(part_flamespark_large,0,.5,0);
+part_type_life(part_flamespark_large,seconds_to_frames(4),seconds_to_frames(5));
 
 part_flame = part_type_create();
 part_type_shape(part_flame,pt_shape_disk);

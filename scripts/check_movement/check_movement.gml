@@ -3,7 +3,13 @@
 #region Move as normal
 var below = on_land;
 if ((in[left] || in[right]) && !(in[left] && in[right])) {
-    xspd = clamp(xspd + (-in[left] + in[right]) * (friction * 1.75), -WALKSPEED, WALKSPEED);
+	var control_direction = -in[left] + in[right];
+	var newxspd = clamp(xspd + control_direction * (friction * 1.75), -WALKSPEED, WALKSPEED);
+	if (sign(xspd) != control_direction) {
+		xspd = newxspd;
+	} else {
+		xspd = sign(xspd) * max(abs(xspd), abs(newxspd));
+	}
 	if (below) {
 		change_sprite(RUN,-1,1);
 		if (animation_hit_frame(1) || animation_hit_frame(5)) {
@@ -13,9 +19,10 @@ if ((in[left] || in[right]) && !(in[left] && in[right])) {
 	
 } else {
 	if (xspd != 0) {
+		var rate = on_land * .9 + .1;
 	    var s = sign(xspd);
-	    xspd -= s*friction;
-	    if (sign(xspd) != s) {
+	    xspd -= s*friction * rate;
+	    if (sign(xspd) != s && s != 0) {
 	        xspd = 0;
 	    }
 		if (below) {

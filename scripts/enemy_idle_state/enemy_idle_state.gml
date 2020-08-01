@@ -9,5 +9,5 @@ if (state == IDLE)
 if (state == IDLE) {
 	//check_attack();
 	if (in[attack])
-		state = ENEMY_ATTACK_1;
+		state = ENEMY_ATTACK_2;
 }

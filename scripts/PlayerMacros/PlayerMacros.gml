@@ -8,4 +8,4 @@
 #macro LA_YSCALE 15
 #macro LA_DAMAGE 1
 #macro LA_XHIT 7
-#macro LA_YHIT -10
+#macro LA_YHIT 0

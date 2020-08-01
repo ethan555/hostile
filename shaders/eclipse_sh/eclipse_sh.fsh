@@ -17,6 +17,13 @@ uniform vec2 resolution;
 uniform float xpos;
 uniform float ypos;
 
+const vec3 color_dist = vec3(.35, .2, 1.);
+
+const vec3 star_color_dist = vec3(.1, .4, 1.);
+const vec3 star_color_dist2 = vec3(.35, .1, 1.);
+
+const float scale = 10.;
+
 float random(vec2 st) {
 	return fract(sin(dot(st.xy, vec2(12.9898,78.233)))* 43758.5453123);
 }
@@ -58,7 +65,6 @@ float gradient_octaves(vec3 st, int octaves) {
 
 void main( void ) {
 
-	float scale = 10.;
 	vec2 center = vec2(xpos, (ypos * resolution.y / resolution.x));
 
 	float pix_scale = 1.;
@@ -100,11 +106,8 @@ void main( void ) {
 
 	value = max(value, 0.);
 
-    vec3 color_dist = vec3(.35, .2, 1.);
     color.rgb = color_dist * vec3(value, value, value);
 
-    vec3 star_color_dist = vec3(.1, .4, 1.);
-    vec3 star_color_dist2 = vec3(.35, .1, 1.);
     color.rgb += star_color_dist * vec3(spacevalue, spacevalue, spacevalue) * stars;
 	color.rgb += star_color_dist2 * spacevalue * belt;
 	color.rgb += mix(star_color_dist * cloud, star_color_dist2 * cloud, pow(beltpresence*.7, 2.));

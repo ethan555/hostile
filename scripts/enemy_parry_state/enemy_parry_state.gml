@@ -1,4 +1,4 @@
-/// @description player_parry_state
+/// @description enemy_parry_state
 
 check_friction();
 
@@ -9,15 +9,14 @@ if (animation_end()) {
 	check_block();
 }
 //else if (animation_at_end()) {
-if (animation_at_end()) {
+if (animation_past_frame(0)) {
 	/*if (!in[block]) {
 		// Release the block. Punish?
 		change_sprite(IDLE, 0, 0);
 		state = IDLE;
 		//reset_last_pressed();
 	}*/
-	change_sprite(IDLE, 0, 0);
-	state = IDLE;
+	check_block();
 	/*check_block();
 	check_attack();
 	check_dodge();*/

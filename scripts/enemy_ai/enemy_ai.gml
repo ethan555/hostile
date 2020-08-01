@@ -16,10 +16,10 @@ if (!move) {
 var target_distance = abs(target.x - x);
 var target_direction = sign(target.x - x);
 // Move towards target
-in[left] = (target_direction < 0 && target_distance > desired_distance_max)
-	|| (target_direction > 0 && target_distance < desired_distance_min);// && target_distance > ENEMY_TARGET_DISTANCE;
-in[right] = (target_direction > 0 && target_distance > desired_distance_max)
-	|| (target_direction < 0 && target_distance < desired_distance_min);// && target_distance > ENEMY_TARGET_DISTANCE;
+in[left] = (target_direction < 0 && target_distance > desired_distance_max);
+	//|| (target_direction > 0 && target_distance < desired_distance_min);// && target_distance > ENEMY_TARGET_DISTANCE;
+in[right] = (target_direction > 0 && target_distance > desired_distance_max);
+	//|| (target_direction < 0 && target_distance < desired_distance_min);// && target_distance > ENEMY_TARGET_DISTANCE;
 
 facing = target_direction;
 if (facing == 0) {
@@ -37,7 +37,7 @@ in[jump] = target.y < y;
 in[dodge] = 0;
 
 // Attack if the player is in range and isn't attacking us
-if (can_attack && target_distance < ENEMY_TARGET_DISTANCE) {
+if (state == IDLE && can_attack && target_distance < ENEMY_TARGET_DISTANCE) {
 	in[attack] = 1;
 	in[left] = target_direction < 0;
 	in[right] = target_direction > 0;
@@ -47,5 +47,5 @@ if (can_attack && target_distance < ENEMY_TARGET_DISTANCE) {
 
 // Block if we have the stamina
 //if (target_distance < ENEMY_TARGET_DISTANCE && (target.state == SWING || target.state == SWING_BACK) {
-in[block_pressed] = target_distance < ENEMY_TARGET_DISTANCE && (target.state == SWING || target.state == SWING_BACK) && target.image_index < ATTACK_HIT_INDEX;
+in[block_pressed] = target_distance < ENEMY_PARRY_DISTANCE && (target.state == SWING || target.state == SWING_BACK) && target.image_index < ATTACK_HIT_INDEX;
 //}

@@ -2,7 +2,7 @@
 event_inherited();
 
 // Set view state
-state = view_follow_p_state;
+state = view_follow_p_restricted_state;
 
 //Set view zoom
 zoom = 1;

@@ -17,6 +17,8 @@ uniform vec2 resolution;
 uniform float pixel_width;
 uniform float pixel_height;
 
+const vec3 color_dist = vec3(0.1, .9, .6);
+
 float random(vec2 st) {
 	return fract(sin(dot(st.xy, vec2(12.9898,78.233)))* 43758.5453123);
 }
@@ -106,7 +108,6 @@ void main( void ) {
 	float ycheat = -.95;
 	value = smoothstep(0., 1., value*((pow(sin(ycheat+position.y*3.5)*.5+.5,10.)*2.)*.5 +
 			(pow(sin(ycheat+position.y*1.5)*.5+.5,8.)*2.)*.5));
-	vec3 color_dist = vec3(0.1, .9, .6);
 
 	/*float starvalue = 0.;
 	vec3 stars = vec3(0.);

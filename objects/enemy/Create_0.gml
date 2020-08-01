@@ -10,6 +10,7 @@ desired_distance_min = 0;
 desired_distance_max = ENEMY_TARGET_DISTANCE;
 can_attack = true;
 attack_index = 0;
+attack_charge = 0;
 
 states[IDLE] = enemy_idle_state;
 states[DODGE] = player_dodge_state;

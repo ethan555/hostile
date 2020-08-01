@@ -1,6 +1,6 @@
 /// @description Draw the player
 var i, xx, yy;
-xx = round(x);
+xx = round(x) + (random(2) - 1) * vibrate;
 yy = round(y);
 
 // Draw self

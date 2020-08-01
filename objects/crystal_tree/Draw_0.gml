@@ -1,17 +1,18 @@
 /// @description Draw trees
 
+if (!done) {
 if (!surface_exists(spark_surface))
 	spark_surface = surface_create(width, height);
 
 surface_set_target(spark_surface);
 
 // Fade out
-gpu_set_blendmode(bm_subtract);
+/*gpu_set_blendmode(bm_subtract);
 draw_set_color(color);//c_dkgray);
 draw_set_alpha(.00000);
 draw_rectangle(0, 0, width, height, false);
 draw_set_alpha(1);
-gpu_set_blendmode(bm_normal);
+gpu_set_blendmode(bm_normal);*/
 
 //gpu_set_blendmode(bm_add);
 draw_set_alpha(1);
@@ -26,8 +27,8 @@ for (var i = 0, length = ds_list_size(spark_list); i < length; i += spark_num) {
 	//draw_rectangle(xx - size, yy - size, xx + size, yy + size, false);
 	draw_set_color(c_black);
 	draw_circle(xx, yy, size * spark_scale, false);
-	draw_set_color(color);
-	draw_circle(xx, yy, size * spark_scale, true);
+	//draw_set_color(color);
+	//draw_circle(xx, yy, size * spark_scale, true);
 }
 
 //gpu_set_blendmode(bm_normal);
@@ -35,4 +36,9 @@ for (var i = 0, length = ds_list_size(spark_list); i < length; i += spark_num) {
 //gpu_set_blendmode(bm_normal);
 draw_set_alpha(1);
 surface_reset_target();
+}
+shader_set(shader);
+shader_set_uniform_f(pixel_width, texel_width);
+shader_set_uniform_f(pixel_height, texel_height);
 draw_surface(spark_surface, x - width/2, y - height);
+shader_reset();

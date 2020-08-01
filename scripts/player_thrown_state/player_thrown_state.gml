@@ -9,6 +9,7 @@ if (landed) {
 		alarm[0] = clamp(yspdold * 2, seconds_to_frames(.75), seconds_to_frames(2));
 		emit_dust_large(20);
 		create_rocks(bbox_left - 2, bbox_right + 2, bbox_top-1, bbox_top-1, 0, 5, -yspdold/2, -yspdold/4, .1, .25, 5);
+		view_screenshake(2,seconds_to_frames(.2));
 	}
 	check_friction();
 } else {

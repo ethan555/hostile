@@ -28,8 +28,9 @@ if (on_land) {
 				shoot_projectile(fireball, x + projectile_x * facing, y + projectile_y, -1, player, facing * FIREBALL_SPEED, 0);
 			} else if (image_index < ATTACK_HIT_INDEX) {
 				var target_distance = abs(target.x - x);
-				if (target_distance < ENEMY_TARGET_DISTANCE && (target.state == SWING || target.state == SWING_BACK) && target.image_index < ATTACK_HIT_INDEX) {
+				if (target_distance < ENEMY_PARRY_DISTANCE && (target.state == SWING || target.state == SWING_BACK) && target.image_index < ATTACK_HIT_INDEX) {
 					// PARRY
+					reset_enemy_attack();
 					in[block] = true;
 					check_block();
 					return;
@@ -46,8 +47,9 @@ if (on_land) {
 			} else if (image_index < ATTACK_HIT_INDEX) {
 				create_particles(emitter, part_charge, irandom(1));
 				var target_distance = abs(target.x - x);
-				if (target_distance < ENEMY_TARGET_DISTANCE && (target.state == SWING || target.state == SWING_BACK) && target.image_index < ATTACK_HIT_INDEX) {
+				if (target_distance < ENEMY_PARRY_DISTANCE && (target.state == SWING || target.state == SWING_BACK) && target.image_index < ATTACK_HIT_INDEX) {
 					// PARRY
+					reset_enemy_attack();
 					in[block] = true;
 					check_block();
 					return;

@@ -11,7 +11,7 @@ if (on_land) {
 		alarm[1] = clamp(seconds_to_frames(yspdold/(LANDSPEED * 2)), seconds_to_frames(.25), seconds_to_frames(.5));
 		emit_dust_large(20);
 		create_rocks(bbox_left - 2, bbox_right + 2, bbox_top-1, bbox_top-1, 0, 5, -yspdold/2, -yspdold/4, .1, .25, 5);
-	
+		view_screenshake(1,seconds_to_frames(.2));
 	} else if (in[jump]) {
 	    if (in[down] && l_below) {
 	        y += 1;
@@ -24,6 +24,18 @@ if (on_land) {
 		reset_last_pressed();
 	}
 } else {
+	if (in[jump]) {
+	    if (check_walljump()) {
+			y = floor(y);
+	        yspd = -WALLJUMPYSPEED;
+			facing = -facing;
+			xspd = WALLJUMPXSPEED * facing;
+			change_sprite(JUMP,0,0);
+			part_emitter_region(part_system,emitter,x-facing*6,x-facing*4,bbox_bottom,y,ps_shape_rectangle,ps_distr_linear);
+			emit_dust(10);
+			reset_last_pressed();
+	    }
+	}
 	var index = 0;
 	if (yspd > 0) {
 		index = 1;

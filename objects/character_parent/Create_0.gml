@@ -83,6 +83,8 @@ sprite[DIE] = player_die_sp;
 sprite[SUICIDE] = player_suicide_sp;
 sprite[SUICIDE_JUMP] = player_suicide_jump_sp;
 sprite[SWING_BACK] = player_swing_back_sp;
+sprite[CHARGE] = player_charge_sp;
+sprite[RAISE] = player_raise_sp;
 
 weapon_sprite_index = SWORD_NONE;
 weapon_sprite[SWORD_SWING] = sword_swing_sp;

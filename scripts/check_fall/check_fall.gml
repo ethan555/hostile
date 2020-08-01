@@ -9,6 +9,7 @@ if (!below) {
 	if (yspd > 0) {
 		index = 1;
 	}
+	xspd = clamp(xspd + (friction * 1.75), -WALKSPEED, WALKSPEED);
 	state = IDLE;
 	change_sprite(JUMP,index,0);
 }

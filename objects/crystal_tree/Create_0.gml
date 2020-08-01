@@ -20,4 +20,15 @@ spark_num = ds_list_size(spark_list);
 num_branches = irandom(rate*5)+5;
 branches = 1;
 
+emitter = part_emitter_create(part_system);
+
 //alarm[0] = seconds_to_frames(10);
+shader = outline_sh;
+var tex = surface_get_texture(spark_surface);
+texel_width = texture_get_texel_width(tex);
+texel_height = texture_get_texel_height(tex);
+
+pixel_width = shader_get_uniform(shader,"pixel_width");
+pixel_height = shader_get_uniform(shader,"pixel_height");
+
+done = false;
